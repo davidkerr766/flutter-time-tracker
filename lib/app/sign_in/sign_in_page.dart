@@ -4,14 +4,12 @@ import 'package:time_tracker/app/sign_in/social_sign_in_button.dart';
 import 'package:time_tracker/services/auth.dart';
 
 class SignInPage extends StatelessWidget {
-  SignInPage({@required this.auth, @required this.onSignIn});
-  final Function(AppUser) onSignIn;
+  SignInPage({@required this.auth});
   final AuthBase auth;
 
   Future<void> _signInAnonymously() async {
     try {
-      AppUser user = await auth.signInAnonymously();
-      onSignIn(user);
+      await auth.signInAnonymously();
     } catch (e) {
       print(e.toString());
     }
